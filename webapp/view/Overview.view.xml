@@ -18,18 +18,24 @@
                             </Toolbar>
                         </f:toolbar>
                         <f:content>
-                            <core:Title text="General Data"/>
-                            <Label text="Form"/><Input value=""/>
-                            <Label text="Customer Name"/><Input value=""/>
-                            <Label text="Discount"/><Input value=""/>
-                            <core:Title text="Address Data"/>
-                            <Label text="Street"/><Input value=""/>
-                            <Label text="Post Code"/><Input value=""/>
-                            <Label text="City"/><Input value=""/>
-                            <Label text="Country"/><Input value=""/>
-                            <core:Title text="Contact Data"/>
-                            <Label text="Email"/><Input value=""/>
-                            <Label text="Telephone"/><Input value=""/>
+                            <core:Title text="General Data 1"/>
+                                <Label text="LastName"/><Input value="{input>/LastName}"/>
+                                <Label text="FirstName"/><Input value="{input>/FirstName}"/>
+                                <Label text="Title"/><Input value="{input>/Title}"/>
+                            <core:Title text="General Data 2"/>
+                                <Label text="TitleOfCourtesy"/><Input value="{input>/TitleOfCourtesy}"/>
+                                <Label text="BirthDate"/><Input value="{input>/BirthDate}"/>
+                                <Label text="HireDate"/><Input value="{input>/HireDate}"/>
+                                <Label text="Address"/><Input value="{input>/Address}"/>
+                            <core:Title text="General Data 3"/>
+                                <Label text="City"/><Input value="{input>/City}"/>
+                                <Label text="Region"/><Input value="{input>/Region}"/>
+                                <Label text="PostalCode"/><Input value="{input>/PostalCode}"/>
+                            <core:Title text="General Data 4"/>
+                                <Label text="Country"/><Input value="{input>/Country}"/>
+                                <Label text="HomePhone"/><Input value="{input>/HomePhone}"/>
+                                <Label text="Extension"/><Input value="{input>/Extension}"/>
+                                <Label text="Photo"/><Input value="{input>/Photo}"/>
                         </f:content>
                     </f:SimpleForm>
                 </content>
