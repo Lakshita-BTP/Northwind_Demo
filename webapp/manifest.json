@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/V4/(S(beqjfszbrmnhs4scpb3iewta))/Northwind/Northwind.svc/",
+        "uri": "/V2/Northwind/Northwind.svc/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -66,11 +66,7 @@
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
-        }
+        "settings": {}
       }
     },
     "resources": {
