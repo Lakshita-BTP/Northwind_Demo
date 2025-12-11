@@ -22,20 +22,6 @@
                                 <Label text="LastName"/><Input value="{input>/LastName}"/>
                                 <Label text="FirstName"/><Input value="{input>/FirstName}"/>
                                 <Label text="Title"/><Input value="{input>/Title}"/>
-                            <core:Title text="General Data 2"/>
-                                <Label text="TitleOfCourtesy"/><Input value="{input>/TitleOfCourtesy}"/>
-                                <Label text="BirthDate"/><Input value="{input>/BirthDate}"/>
-                                <Label text="HireDate"/><Input value="{input>/HireDate}"/>
-                                <Label text="Address"/><Input value="{input>/Address}"/>
-                            <core:Title text="General Data 3"/>
-                                <Label text="City"/><Input value="{input>/City}"/>
-                                <Label text="Region"/><Input value="{input>/Region}"/>
-                                <Label text="PostalCode"/><Input value="{input>/PostalCode}"/>
-                            <core:Title text="General Data 4"/>
-                                <Label text="Country"/><Input value="{input>/Country}"/>
-                                <Label text="HomePhone"/><Input value="{input>/HomePhone}"/>
-                                <Label text="Extension"/><Input value="{input>/Extension}"/>
-                                <Label text="Photo"/><Input value="{input>/Photo}"/>
                         </f:content>
                     </f:SimpleForm>
                 </content>
@@ -45,39 +31,12 @@
             <columns>
                 <Column><header><Text text="EmployeeID"/></header></Column>
                 <Column><header><Text text="LastName"/></header></Column>
-                <Column><header><Text text="FirstName"/></header></Column>
-                <Column><header><Text text="Title"/></header></Column>
-                <Column><header><Text text="TitleOfCourtesy"/></header></Column>
-                <Column><header><Text text="BirthDate"/></header></Column>
-                <Column><header><Text text="HireDate"/></header></Column>
-                <Column><header><Text text="Address"/></header></Column>
-                <Column><header><Text text="City"/></header></Column>
-                <Column><header><Text text="Region"/></header></Column>
-                <Column><header><Text text="PostalCode"/></header></Column>
-                <Column><header><Text text="Country"/></header></Column>
-                <Column><header><Text text="HomePhone"/></header></Column>
-                <Column><header><Text text="Extension"/></header></Column>
-                <Column><header><Text text="Notes"/></header></Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title=""/>
-                        <Text text="{EmployeeID}"/>
+                        <ObjectIdentifier title="{EmployeeID}"/>
                         <Text text="{LastName}"/>
-                        <Text text="{FirstName}"/>
-                        <Text text="{Title}"/>
-                        <Text text="{TitleOfCourtesy}"/>
-                        <Text text="{BirthDate}"/>
-                        <Text text="{HireDate}"/>
-                        <Text text="{Address}"/>
-                        <Text text="{City}"/>
-                        <Text text="{Region}"/>
-                        <Text text="{PostalCode}"/>
-                        <Text text="{Country}"/>
-                        <Text text="{HomePhone}"/>
-                        <Text text="{Extension}"/>
-                        <Text text="{Notes}"/>
                     </cells>
                 </ColumnListItem>
             </items>
