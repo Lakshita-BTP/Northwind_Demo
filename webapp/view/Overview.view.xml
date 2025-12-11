@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
 
-    <Page title="Flight Customers">
+    <Page title="Employees">
         <content>
             <Panel headerText="New Customer" expandable="true" expanded="true">
                 <content>
@@ -41,5 +41,50 @@
                 </content>
             </Panel>
         </content>
+        <Table headerText="Total Employees" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Employees'}">
+            <columns>
+                <Column><header><Text text="EmployeeID"/></header></Column>
+                <Column><header><Text text="LastName"/></header></Column>
+                <Column><header><Text text="FirstName"/></header></Column>
+                <Column><header><Text text="Title"/></header></Column>
+                <Column><header><Text text="TitleOfCourtesy"/></header></Column>
+                <Column><header><Text text="BirthDate"/></header></Column>
+                <Column><header><Text text="HireDate"/></header></Column>
+                <Column><header><Text text="Address"/></header></Column>
+                <Column><header><Text text="City"/></header></Column>
+                <Column><header><Text text="Region"/></header></Column>
+                <Column><header><Text text="PostalCode"/></header></Column>
+                <Column><header><Text text="Country"/></header></Column>
+                <Column><header><Text text="HomePhone"/></header></Column>
+                <Column><header><Text text="Extension"/></header></Column>
+                <Column><header><Text text="Notes"/></header></Column>
+                <Column><header><Text text="ReportsTo"/></header></Column>
+                <Column><header><Text text="PhotoPath"/></header></Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title=""/>
+                        <Text text="{EmployeeID}"/>
+                        <Text text="{LastName}"/>
+                        <Text text="{FirstName}"/>
+                        <Text text="{Title}"/>
+                        <Text text="{TitleOfCourtesy}"/>
+                        <Text text="{BirthDate}"/>
+                        <Text text="{HireDate}"/>
+                        <Text text="{Address}"/>
+                        <Text text="{City}"/>
+                        <Text text="{Region}"/>
+                        <Text text="{PostalCode}"/>
+                        <Text text="{Country}"/>
+                        <Text text="{HomePhone}"/>
+                        <Text text="{Extension}"/>
+                        <Text text="{Notes}"/>
+                        <Text text="{ReportsTo}"/>
+                        <Text text="{PhotoPath}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
     </Page>
 </mvc:View>
