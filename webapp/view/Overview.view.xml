@@ -4,39 +4,52 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
 
-    <Page title="Employees">
+    <Page title="Products">
         <content>
-            <Panel headerText="New Customer" expandable="true" expanded="true">
+            <Panel headerText="New Product" expandable="true" expanded="true">
                 <content>
                     <f:SimpleForm layout="ColumnLayout" editable="true">
                         <f:toolbar>
                             <Toolbar>
                                 <content>
                                     <ToolbarSpacer/>
-                                    <Button icon="sap-icon://create" text="Create Customer"/>
+                                    <Button icon="sap-icon://create" text="Create Product"/>
                                 </content>
                             </Toolbar>
                         </f:toolbar>
                         <f:content>
                             <core:Title text="General Data 1"/>
-                                <Label text="LastName"/><Input value="{input>/LastName}"/>
-                                <Label text="FirstName"/><Input value="{input>/FirstName}"/>
-                                <Label text="Title"/><Input value="{input>/Title}"/>
+                                <Label text="Name"/><Input value="{input>/Name}"/>
+                                <Label text="Description"/><Input value="{input>/Description}"/>
+                                <Label text="ReleaseDate"/><Input value="{input>/ReleaseDate}"/>
+                                <Label text="DiscontinuedDate"/><Input value="{input>/DiscontinuedDate}"/>
+                                <Label text="Rating"/><Input value="{input>/Rating}"/>
+                                <Label text="Price"/><Input value="{input>/Price}"/>
                         </f:content>
                     </f:SimpleForm>
                 </content>
             </Panel>
         </content>
-        <Table headerText="Total Employees" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
+        <Table headerText="Total Products" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
             <columns>
                 <Column><header><Text text="Product ID"/></header></Column>
                 <Column><header><Text text="Product Name"/></header></Column>
+                <Column><header><Text text="Description"/></header></Column>
+                <Column><header><Text text="ReleaseDate"/></header></Column>
+                <Column><header><Text text="DiscontinuedDate"/></header></Column>
+                <Column><header><Text text="Rating"/></header></Column>
+                <Column><header><Text text="Price"/></header></Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
                         <ObjectIdentifier title="{ID}"/>
                         <Text text="{Name}"/>
+                        <Text text="{Description}"/>
+                        <Text text="{ReleaseDate}"/>
+                        <Text text="{DiscontinuedDate}"/>
+                        <Text text="{Rating}"/>
+                        <Text text="{Price}"/>
                     </cells>
                 </ColumnListItem>
             </items>
