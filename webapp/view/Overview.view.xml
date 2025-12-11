@@ -27,16 +27,16 @@
                 </content>
             </Panel>
         </content>
-        <Table headerText="Total Employees" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Employees'}">
+        <Table headerText="Total Employees" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
             <columns>
-                <Column><header><Text text="EmployeeID"/></header></Column>
-                <Column><header><Text text="LastName"/></header></Column>
+                <Column><header><Text text="Product ID"/></header></Column>
+                <Column><header><Text text="Product Name"/></header></Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title="{EmployeeID}"/>
-                        <Text text="{LastName}"/>
+                        <ObjectIdentifier title="{ID}"/>
+                        <Text text="{Name}"/>
                     </cells>
                 </ColumnListItem>
             </items>

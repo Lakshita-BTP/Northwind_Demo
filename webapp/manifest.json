@@ -17,12 +17,12 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/V3/Northwind/Northwind.svc/",
+        "uri": "/V2/(S(5xzs0q1rrevwbs0h4jwd5eg2))/OData/OData.svc/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "3.0"
+          "odataVersion": "2.0"
         }
       }
     }
