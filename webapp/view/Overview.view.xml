@@ -58,8 +58,6 @@
                 <Column><header><Text text="HomePhone"/></header></Column>
                 <Column><header><Text text="Extension"/></header></Column>
                 <Column><header><Text text="Notes"/></header></Column>
-                <Column><header><Text text="ReportsTo"/></header></Column>
-                <Column><header><Text text="PhotoPath"/></header></Column>
             </columns>
             <items>
                 <ColumnListItem>
@@ -80,8 +78,6 @@
                         <Text text="{HomePhone}"/>
                         <Text text="{Extension}"/>
                         <Text text="{Notes}"/>
-                        <Text text="{ReportsTo}"/>
-                        <Text text="{PhotoPath}"/>
                     </cells>
                 </ColumnListItem>
             </items>
