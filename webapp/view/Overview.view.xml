@@ -13,12 +13,13 @@
                             <Toolbar>
                                 <content>
                                     <ToolbarSpacer/>
-                                    <Button icon="sap-icon://create" text="Create Product"/>
+                                    <Button icon="sap-icon://create" text="Create Product" press=".onSave"/>
                                 </content>
                             </Toolbar>
                         </f:toolbar>
                         <f:content>
                             <core:Title text="General Data 1"/>
+                                <Label text="ID"/><Input value="{input>/ID}"/>
                                 <Label text="Name"/><Input value="{input>/Name}"/>
                                 <Label text="Description"/><Input value="{input>/Description}"/>
                                 <Label text="ReleaseDate"/><Input value="{input>/ReleaseDate}"/>
@@ -30,7 +31,7 @@
                 </content>
             </Panel>
         </content>
-        <Table headerText="Total Products" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
+        <Table id="productTable" headerText="Total Products" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
             <columns>
                 <Column><header><Text text="Product ID"/></header></Column>
                 <Column><header><Text text="Product Name"/></header></Column>
