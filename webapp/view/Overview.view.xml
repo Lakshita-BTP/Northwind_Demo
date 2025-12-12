@@ -31,7 +31,21 @@
                 </content>
             </Panel>
         </content>
-        <Table id="productTable" headerText="Total Products" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
+        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
+        		<headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="Products" level="H6"/>
+                            <ToolbarSpacer />
+                            <ToggleButton id="editProducts" text="Edit Products" press="editProducts" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <infoToolbar>
+                    <OverflowToolbar>
+                        <Label text="Wide range of available products"/>
+                    </OverflowToolbar>
+                </infoToolbar>
             <columns>
                 <Column><header><Text text="Product ID"/></header></Column>
                 <Column><header><Text text="Product Name"/></header></Column>
