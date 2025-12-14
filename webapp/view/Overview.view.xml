@@ -31,13 +31,15 @@
                 </content>
             </Panel>
         </content>
-        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path: '/Products'}">
+        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" > <!--items="{ path: '/Products'}"-->
         		<headerToolbar>
                     <OverflowToolbar>
                         <content>
                             <Title text="Products" level="H6"/>
                             <ToolbarSpacer />
-                            <ToggleButton id="editProducts" text="Edit Products" press="editProducts" />
+                            <Button id="editProducts" text="Edit Products" press="editProducts" />
+                            <Button id="saveButton" text="Save" type="Transparent" press="onSave" visible="false" />
+						    <Button id="cancelButton" text="Cancel" type="Transparent" press="onCancel" visible="false" />
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
@@ -47,22 +49,30 @@
                     </OverflowToolbar>
                 </infoToolbar>
             <columns>
-                <Column><header><Text text="Product ID"/></header></Column>
-                <Column><header><Text text="Product Name"/></header></Column>
-                <Column><header><Text text="Description"/></header></Column>
-                <Column><header><Text text="ReleaseDate"/></header></Column>
-                <Column><header><Text text="DiscontinuedDate"/></header></Column>
-                <Column><header><Text text="Rating"/></header></Column>
-                <Column><header><Text text="Price"/></header></Column>
+                <Column><header><Text text="Product" /></header></Column>
+                <Column><header><Text text="Description" /></header></Column>
+                <Column><header><Text text="ReleaseDate" /></header></Column>
+                <Column><header><Text text="DiscontinuedDate" /></header></Column>
+                <Column><header><Text text="Rating" /></header></Column>
+                <Column><header><Text text="Price" /></header></Column>
             </columns>
             <items>
-                <ColumnListItem>
+                <ColumnListItem >
                     <cells>
-                        <ObjectIdentifier title="{ID}"/>
-                        <Text text="{Name}"/>
-                        <Text text="{Description}"/>
-                        <Text text="{ReleaseDate}"/>
-                        <Text text="{DiscontinuedDate}"/>
+                        <ObjectIdentifier title="{Name}" text="{ID}"/>
+                        <ObjectIdentifier title="{Description}" text="{Name}"/>
+                        <ObjectIdentifier title="{ path: 'ReleaseDate',
+                                                   type: 'sap.ui.model.type.Date',
+                                                   formatOptions: { pattern: 'EEE MMM-dd yyyy' } }"
+                                          text="{ path: 'CreatedOn',
+                                                  type: 'sap.ui.model.type.DateTime',
+                                                  formatOptions: { pattern: 'HH:mm:ss' } } (GMT+530)"/>
+                        <ObjectIdentifier title="{ path: 'DiscontinuedDate',
+                                                   type: 'sap.ui.model.type.Date',
+                                                   formatOptions: { pattern: 'EEE MMM-dd yyyy' } }"
+                                          text="{ path: 'DiscontinuedDate',
+                                                  type: 'sap.ui.model.type.DateTime',
+                                                  formatOptions: { pattern: 'HH:mm:ss' } } (GMT+530)"/>
                         <Text text="{Rating}"/>
                         <Text text="{Price}"/>
                     </cells>
