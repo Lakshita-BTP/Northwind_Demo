@@ -16,22 +16,25 @@ sap.ui.define([
             this.oTable = this.byId("productTable");
             this.oReadOnlyTemplate = this.byId("productTable").removeItem(0);
             this.rebindTable(this.oReadOnlyTemplate, "Navigation");
-            this.oEditableTemplate = new ColumnListItem({ cells: [  new Input({ value: "{ID}" }),
-                                                                    new Input({ value: "{Name}" }), 
-                                                                    new Input({ value: "{Description}" }), 
-                                                                    new Input({ value: "{ReleaseDate}" }) 
-                                                                ]
-                                                        });
+            this.oEditableTemplate = new ColumnListItem({
+                cells: [new Input({ value: "{Name}" }),
+                new Input({ value: "{Description}" }),
+                new Input({ value: "{ReleaseDate}" }),
+                new Input({ value: "{DiscontinuedDate}" }),
+                new Input({ value: "{Rating}" }),
+                new Input({ value: "{Price}" })
+                ]
+            });
         },
 
-        rebindTable: function(oTemplate, sKeyboardMode) {
-			this.oTable.bindItems({
-				path: "/Products",
-				template: oTemplate,
-				templateShareable: true,
-				key: "ID"
-			});
-		},
+        rebindTable: function (oTemplate, sKeyboardMode) {
+            this.oTable.bindItems({
+                path: "/Products",
+                template: oTemplate,
+                templateShareable: true,
+                key: "ID"
+            });
+        },
 
         onSave: function () {
             var oModelData = this.getView().getModel("input").getData();
@@ -51,27 +54,56 @@ sap.ui.define([
                 MessageToast.show(oResourceBundle.getText("productCreatedMessage"));
             });
 
-            // this.byId("saveButton").setVisible(false);
-			// this.byId("cancelButton").setVisible(false);
-			// this.byId("editButton").setVisible(true);
-			// this.rebindTable(this.oReadOnlyTemplate, "Navigation");
-
         },
 
-        editProducts: function() {
-			this.aProductCollection = deepExtend([], this.getView().getModel().getProperty("/Products"));
-			this.byId("editProducts").setVisible(false);
-			this.byId("saveButton").setVisible(true);
-			this.byId("cancelButton").setVisible(true);
-			this.rebindTable(this.oEditableTemplate, "Edit Products");
-		},
+        editProducts: function () {
+            this.aProductCollection = deepExtend([], this.getView().getModel().getProperty("/Products"));
+            this.byId("editProducts").setVisible(false);
+            this.byId("saveButton").setVisible(true);
+            this.byId("cancelButton").setVisible(true);
+            this.rebindTable(this.oEditableTemplate, "Edit Products");
+        },
 
-		onCancel: function() {
-			this.byId("cancelButton").setVisible(false);
-			this.byId("saveButton").setVisible(false);
-			this.byId("editProducts").setVisible(true);
-			this.getView().getModel().setProperty("/Products", this.aProductCollection);
-			this.rebindTable(this.oReadOnlyTemplate, "Navigation");
-		},
+        onCancel: function () {
+            this.byId("cancelButton").setVisible(false);
+            this.byId("saveButton").setVisible(false);
+            this.byId("editProducts").setVisible(true);
+            this.getView().getModel().setProperty("/Products", this.aProductCollection);
+            this.rebindTable(this.oReadOnlyTemplate, "Navigation");
+        },
+
+        onSaveTable: function (oEvent) {
+
+            var oTable = this.byId("productTable");
+            var aItems = oTable.getItems();
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.setUseBatch(false);
+            var oId = 0;
+
+            aItems.forEach(function (oItem) {
+                var aCells = oItem.getCells();
+                var sName = aCells[0].getValue();
+                var sDesc = aCells[1].getValue();
+                var sRelDate = aCells[2].getValue();
+                var sDisconDate = aCells[3].getValue();
+                var sRating = aCells[4].getValue();
+                var sPrice = aCells[5].getValue();
+
+                oModel.update("/Products(" + oId + ")", {
+                    Rating: sRating,
+                    Name: sName
+                });
+
+                oId = oId + 1 ;
+                
+            });
+
+            oModel.refresh(true);
+
+            this.byId("saveButton").setVisible(false);
+            this.byId("cancelButton").setVisible(false);
+            this.byId("editProducts").setVisible(true);
+            this.rebindTable(this.oReadOnlyTemplate, "Navigation");
+        },
     });
 });
