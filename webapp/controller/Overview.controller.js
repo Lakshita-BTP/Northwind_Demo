@@ -37,42 +37,24 @@ sap.ui.define([
         },
 
         onSave: function () {
-            // var oModelData = this.getView().getModel("input").getData();
-            // var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.setUseBatch(false);
 
-            // //if (oModelData.Discount === undefined) { oModelData.Discount = 0; }
-
-            // this.byId("productTable").getBinding("items").create({
-            //     "ID": oModelData.ID,
-            //     "Name": oModelData.Name,
-            //     "Description": oModelData.Description,
-            //     "ReleaseDate": oModelData.ReleaseDate,
-            //     "DiscontinuedDate": oModelData.DiscontinuedDate,
-            //     "Rating": oModelData.Rating,
-            //     "Price": oModelData.Price
-            // }).created().then(function () {
-            //     MessageToast.show(oResourceBundle.getText("productCreatedMessage"));
-            // });
-
-            var oModelCreate = this.getOwnerComponent().getModel();
-            oModelCreate.setUseBatch(false);
-            
-            oModelCreate.create("/Products", {
-                ID: 9,
-                Name: "Test",
-                Description: "Test description",
-                ReleaseDate: new Date(),
-                Rating: 5,
-                Price: "100.00"
-            }, {
+            oModel.read("/Products", {
+                urlParameters: { "$orderby": "ID desc", "$top": 1 },
                 success: function (oData) {
-                    console.log("Product created", oData);
-                },
-                error: function (oError) {
-                    console.error("Create failed", oError);
-                }
-            });
+                    var iNextId = 1;
 
+                    if (oData.results.length > 0) { iNextId = oData.results[0].ID + 1; }
+
+                    oModel.create("/Products", { ID: iNextId, Name: "Test", Description: "Auto ID", ReleaseDate: new Date(), Rating: 5, Price: "100.00" }, {
+                        success: function (oData) { sap.m.MessageToast.show("Created ID " + oData.ID); },
+                        error: function (oError) { console.error(oError.responseText); }
+                    });
+                    this._createProduct(iNextId);
+                },
+                error: function (oError) { console.error(oError); }
+            });
         },
 
         editProducts: function () {
