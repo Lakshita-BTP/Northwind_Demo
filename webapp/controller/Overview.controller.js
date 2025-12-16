@@ -5,8 +5,9 @@ sap.ui.define([
     "sap/m/ColumnListItem",
     "sap/m/Input",
     "sap/base/util/deepExtend",
-    "sap/m/MessageBox"
-], (Controller, JSONModel, MessageToast, ColumnListItem, Input, deepExtend, MessageBox) => {
+    "sap/m/MessageBox",
+	"sap/ui/core/Fragment"
+], (Controller, JSONModel, MessageToast, ColumnListItem, Input, deepExtend, MessageBox, Fragment) => {
     "use strict";
 
     return Controller.extend("northwinddemo.controller.Overview", {
@@ -151,6 +152,31 @@ sap.ui.define([
             var oDeleteBtn = this.byId("deleteProducts");
 
             oDeleteBtn.setEnabled(oTable.getSelectedItems().length > 0);
+        },
+
+        onPress: function () {
+            var oView = this.getView(),
+                oButton = oView.byId("button");
+
+            if (!this._oMenuFragment) {
+                this._oMenuFragment = Fragment.load({
+                    id: oView.getId(),
+                    name: "northwinddemo.view.Menu",
+                    controller: this
+                }).then(function (oMenu) {
+                    oMenu.openBy(oButton);
+                    this._oMenuFragment = oMenu;
+                    return this._oMenuFragment;
+                }.bind(this));
+            } else if (this._oMenuFragment.isOpen()) {
+                this._oMenuFragment.close();
+            } else {
+                this._oMenuFragment.openBy(oButton);
+            }
+        },
+
+        onNew: function() {
+            sap.m.MessageToast.show("Menu item pressed");
         }
     });
 });

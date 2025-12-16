@@ -5,6 +5,7 @@
     xmlns="sap.m">
 
     <Page title="Products">
+    <Button id="button" text="Open Menu" press="onPress" ariaHasPopup="Menu"/>
         <content>
             <Panel headerText="New Product" expandable="true" expanded="true">
                 <content>
