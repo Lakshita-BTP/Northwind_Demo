@@ -30,12 +30,13 @@
                 </content>
             </Panel>
         </content>
-        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" > <!--items="{ path: '/Products'}"-->
+        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" mode="MultiSelect" selectionChange="onSelectionChange" > <!--items="{ path: '/Products'}"-->
         		<headerToolbar>
                     <OverflowToolbar>
                         <content>
                             <Title text="Products" level="H6"/>
                             <ToolbarSpacer />
+                            <Button id="deleteProducts" text="Delete" press="deleteProducts" enabled="false" />
                             <Button id="editProducts" text="Edit Products" press="editProducts" />
                             <Button id="saveButton" text="Save" type="Transparent" press="onSaveTable" visible="false" />
 						    <Button id="cancelButton" text="Cancel" type="Transparent" press="onCancel" visible="false" />

@@ -4,8 +4,9 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/m/ColumnListItem",
     "sap/m/Input",
-    "sap/base/util/deepExtend"
-], (Controller, JSONModel, MessageToast, ColumnListItem, Input, deepExtend) => {
+    "sap/base/util/deepExtend",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, MessageToast, ColumnListItem, Input, deepExtend, MessageBox) => {
     "use strict";
 
     return Controller.extend("northwinddemo.controller.Overview", {
@@ -115,5 +116,41 @@ sap.ui.define([
             this.byId("editProducts").setVisible(true);
             this.rebindTable(this.oReadOnlyTemplate, "Navigation");
         },
+
+        deleteProducts: function () {
+            var oTable = this.byId("productTable");
+            var aSelectedItems = oTable.getSelectedItems();
+
+            if (aSelectedItems.length === 0) {
+                sap.m.MessageToast.show("Please select at least one product");
+                return;
+            }
+
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.setUseBatch(false);
+
+            sap.m.MessageBox.confirm(
+                "Delete " + aSelectedItems.length + " selected product(s)?",
+                {
+                    onClose: function (sAction) {
+                        if (sAction === sap.m.MessageBox.Action.OK) {
+                            aSelectedItems.forEach(function (oItem) {
+                                var sPath = oItem.getBindingContext().getPath();
+                                oModel.remove(sPath);
+                            });
+
+                            sap.m.MessageToast.show("Selected products deleted");
+                        }
+                    }
+                }
+            );
+        },
+
+        onSelectionChange: function (oEvent) {
+            var oTable = oEvent.getSource();
+            var oDeleteBtn = this.byId("deleteProducts");
+
+            oDeleteBtn.setEnabled(oTable.getSelectedItems().length > 0);
+        }
     });
 });
