@@ -10,8 +10,15 @@ sap.ui.define([
 
     return Controller.extend("northwinddemo.controller.Overview", {
         onInit: function () {
-            var oModel = new JSONModel();
-            this.getView().setModel(oModel, "input");
+            var oModel_Input = new JSONModel({
+                Name: "",
+                Description: "",
+                ReleaseDate: "",
+                DiscontinuedDate: "",
+                Rating: "",
+                Price: ""
+            });
+            this.getView().setModel(oModel_Input, "input");
 
             this.oTable = this.byId("productTable");
             this.oReadOnlyTemplate = this.byId("productTable").removeItem(0);
@@ -36,7 +43,8 @@ sap.ui.define([
             });
         },
 
-        onSave: function () {
+        onCreate: function () {
+            var oModelData = this.getView().getModel("input").getData();
             var oModel = this.getOwnerComponent().getModel();
             oModel.setUseBatch(false);
 
@@ -47,12 +55,13 @@ sap.ui.define([
 
                     if (oData.results.length > 0) { iNextId = oData.results[0].ID + 1; }
 
-                    oModel.create("/Products", { ID: iNextId, Name: "Test", Description: "Auto ID", ReleaseDate: new Date(), Rating: 5, Price: "100.00" }, {
+                    oModel.create("/Products", { ID: iNextId, Name: oModelData.Name, Description: oModelData.Description, ReleaseDate: new Date(), Rating: oModelData.Rating, Price: oModelData.Price }, {
                         success: function (oData) { sap.m.MessageToast.show("Created ID " + oData.ID); },
                         error: function (oError) { console.error(oError.responseText); }
                     });
                     this._createProduct(iNextId);
-                },
+
+                }.bind(this),
                 error: function (oError) { console.error(oError); }
             });
         },

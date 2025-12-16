@@ -8,18 +8,17 @@
         <content>
             <Panel headerText="New Product" expandable="true" expanded="true">
                 <content>
-                    <f:SimpleForm layout="ColumnLayout" editable="true">
+                    <f:SimpleForm id="inputForm" layout="ColumnLayout" editable="true">
                         <f:toolbar>
                             <Toolbar>
                                 <content>
                                     <ToolbarSpacer/>
-                                    <Button icon="sap-icon://create" text="Create Product" press=".onSave"/>
+                                    <Button icon="sap-icon://create" text="Create Product" press=".onCreate"/>
                                 </content>
                             </Toolbar>
                         </f:toolbar>
                         <f:content>
                             <core:Title text="General Data 1"/>
-                                <Label text="ID"/><Input value="{input>/ID}"/>
                                 <Label text="Name"/><Input value="{input>/Name}"/>
                                 <Label text="Description"/><Input value="{input>/Description}"/>
                                 <Label text="ReleaseDate"/><Input value="{input>/ReleaseDate}"/>
