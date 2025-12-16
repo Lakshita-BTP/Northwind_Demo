@@ -31,7 +31,8 @@
                 </content>
             </Panel>
         </content>
-        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin" width="auto" mode="MultiSelect" selectionChange="onSelectionChange" > <!--items="{ path: '/Products'}"-->
+        <Table id="productTable" growing="true" growingThreshold="10" class="sapUiResponsiveMargin myProductTable" width="auto" mode="MultiSelect"
+                selectionChange="onSelectionChange"  > <!--items="{ path: '/Products'}"-->
         		<headerToolbar>
                     <OverflowToolbar>
                         <content>
@@ -50,12 +51,12 @@
                     </OverflowToolbar>
                 </infoToolbar>
             <columns>
-                <Column><header><Text text="Product" /></header></Column>
-                <Column><header><Text text="Description" /></header></Column>
-                <Column><header><Text text="ReleaseDate" /></header></Column>
-                <Column><header><Text text="DiscontinuedDate" /></header></Column>
-                <Column><header><Text text="Rating" /></header></Column>
-                <Column><header><Text text="Price" /></header></Column>
+                <Column width="10rem"><header><Text text="Product" /></header></Column>
+                <Column width="22rem"><header><Text text="Description" /></header></Column>
+                <Column width="12rem"><header><Text text="ReleaseDate" /></header></Column>
+                <Column width="12rem"><header><Text text="DiscontinuedDate" /></header></Column>
+                <Column width="8rem"><header><Text text="Rating" /></header></Column>
+                <Column width="12rem"><header><Text text="Price" /></header></Column>
             </columns>
             <items>
                 <ColumnListItem >

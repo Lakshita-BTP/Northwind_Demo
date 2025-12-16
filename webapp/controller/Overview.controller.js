@@ -63,7 +63,7 @@ sap.ui.define([
                     });
                     this._createProduct(iNextId);
 
-                }.bind(this),
+                },
                 error: function (oError) { console.error(oError); }
             });
         },
