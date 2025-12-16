@@ -37,21 +37,40 @@ sap.ui.define([
         },
 
         onSave: function () {
-            var oModelData = this.getView().getModel("input").getData();
-            var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+            // var oModelData = this.getView().getModel("input").getData();
+            // var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            //if (oModelData.Discount === undefined) { oModelData.Discount = 0; }
+            // //if (oModelData.Discount === undefined) { oModelData.Discount = 0; }
 
-            this.byId("productTable").getBinding("items").create({
-                "ID": oModelData.ID,
-                "Name": oModelData.Name,
-                "Description": oModelData.Description,
-                "ReleaseDate": oModelData.ReleaseDate,
-                "DiscontinuedDate": oModelData.DiscontinuedDate,
-                "Rating": oModelData.Rating,
-                "Price": oModelData.Price
-            }).created().then(function () {
-                MessageToast.show(oResourceBundle.getText("productCreatedMessage"));
+            // this.byId("productTable").getBinding("items").create({
+            //     "ID": oModelData.ID,
+            //     "Name": oModelData.Name,
+            //     "Description": oModelData.Description,
+            //     "ReleaseDate": oModelData.ReleaseDate,
+            //     "DiscontinuedDate": oModelData.DiscontinuedDate,
+            //     "Rating": oModelData.Rating,
+            //     "Price": oModelData.Price
+            // }).created().then(function () {
+            //     MessageToast.show(oResourceBundle.getText("productCreatedMessage"));
+            // });
+
+            var oModelCreate = this.getOwnerComponent().getModel();
+            oModelCreate.setUseBatch(false);
+            
+            oModelCreate.create("/Products", {
+                ID: 9,
+                Name: "Test",
+                Description: "Test description",
+                ReleaseDate: new Date(),
+                Rating: 5,
+                Price: "100.00"
+            }, {
+                success: function (oData) {
+                    console.log("Product created", oData);
+                },
+                error: function (oError) {
+                    console.error("Create failed", oError);
+                }
             });
 
         },
@@ -94,8 +113,8 @@ sap.ui.define([
                     Name: sName
                 });
 
-                oId = oId + 1 ;
-                
+                oId = oId + 1;
+
             });
 
             oModel.refresh(true);
