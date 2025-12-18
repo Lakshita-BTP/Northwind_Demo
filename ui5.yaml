@@ -18,7 +18,6 @@ server:
         backend:
           - path: /V2
             url: https://services.odata.org
-            destination: Northwind_V2_S_DEMOJITU
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
